@@ -10,12 +10,11 @@ class Dashboard extends Parent_Controller {
  	}
  
 
-	public function index(){
-		 
- 	 
+	public function index(){ 
 		$data['judul'] = $this->data['judul']; 
 		$data['konten'] = 'dashboard/dashboard_view';
-
+		$data['data_h1'] = '';
+		$data['now'] = '';
 		$this->load->view('template_view',$data);
 	}
 }
