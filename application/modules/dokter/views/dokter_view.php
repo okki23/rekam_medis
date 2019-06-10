@@ -23,11 +23,11 @@
   
                                     <thead>
                                         <tr>
-                                            <th style="width:5%;">No</th>  
-                                            <th style="width:5%;">dokter</th>
-                                            <th style="width:5%;">Tipe</th>   
-                                            <th style="width:5%;">Satuan</th>  
-                                            <th style="width:5%;">Opsi</th> 
+                                            <th style="width:1%;">No</th>  
+                                            <th style="width:5%;">Nama Dokter</th>
+                                            <th style="width:5%;">Telp</th>   
+                                            <th style="width:5%;">Jam Operasional</th>  
+                                            <th style="width:10%;">Opsi</th> 
                                         </tr>
                                     </thead> 
                                 </table> 
@@ -57,29 +57,55 @@
 
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_dokter" id="nama_dokter" class="form-control" placeholder="Nama dokter" />
+                                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" />
                                         </div>
                                     </div>
-                                  <div class="form-group">
-                                    <label> Tipe </label>
-                                    <br>
-                                    <input type="hidden" name="tipe" id="tipe">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="telp" id="telp" class="form-control" placeholder="Telp" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="jam_operasional" id="jam_operasional" class="form-control" placeholder="Jam Operasional ex. 08:00-17.00" />
+                                        </div>
+                                    </div>
 
-                                    <button type="button" id="calculatedbtn" class="btn btn-default waves-effect "> Calculated </button>
-
-                                    <button type="button" id="manualbtn" class="btn btn-default waves-effect "> Manual </button>
-                                    
-                                </div>
-
+                               
                                      <div class="input-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="nama_satuan" id="nama_satuan" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_satuan" id="id_satuan" required>
+                                                <label class="control-label"> Nama Treatment : </label>
+                                                    <input type="text" name="nama_treatment" id="nama_treatment" class="form-control" required readonly="readonly" >
+                                                    <input type="hidden" name="id_treatment" id="id_treatment" required>
+                                                    <input type="hidden" name="id_treatment_detail" id="id_treatment_detail" required>
                                                     
-                                                </div>
+                                                </div> 
                                                 <span class="input-group-addon">
-                                                    <button type="button" onclick="CariSatuan();" class="btn btn-primary"> Pilih Satuan... </button>
+                                                    <button type="button" onclick="CariTreatment();" class="btn btn-primary"> Pilih Treatment... </button>
                                                 </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Sub Treatment : </label>
+                                            <input type="text" name="sub_treatment" id="sub_treatment" class="form-control"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Detail : </label>
+                                            <p id="detail_treatment"> </p>
+                                           
+                                        </div>
                                     </div>
                                      
 
@@ -92,17 +118,15 @@
                     </div>
                 </div>
     </div>
-
-
-  
+ 
   
  
-    <!-- modal cari direktorat -->
-    <div class="modal fade" id="CariSatuanModal" tabindex="-1" role="dialog">
+    <!-- modal cari treatment -->
+    <div class="modal fade" id="CariTreatmentModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" >Cari Satuan</h4>
+                            <h4 class="modal-title" >Cari Treatment</h4>
                         </div>
                         <div class="modal-body">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
@@ -110,14 +134,50 @@
                                 <br>
                                 <hr>
 
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_satuan" >
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_treatment" >
   
                                     <thead>
                                         <tr>  
-                                            <th style="width:98%;">Satuan </th> 
-                                         </tr>
+                                            <th style="width:98%;">Treatment </th> 
+                                            <th style="width:98%;">Sub Treatment </th>
+                                            <th style="width:98%;">Detail </th> 
+                                        
+                                        </tr>
                                     </thead> 
-                                    <tbody id="daftar_satuanx">
+                                    <tbody id="daftar_treatmentx">
+
+                                </tbody>
+                                </table> 
+                       </div>
+                     
+                    </div>
+                </div>
+    </div>
+
+    
+    <!-- modal detail dokter -->
+    <div class="modal fade" id="DetailDokterModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" >Cari Treatment</h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+
+                                <br>
+                                <hr>
+
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_treatment" >
+  
+                                    <thead>
+                                        <tr>  
+                                            <th style="width:98%;">Treatment </th> 
+                                            <th style="width:98%;">Detail </th> 
+                  
+                                        </tr>
+                                    </thead> 
+                                    <tbody id="daftar_treatmentx">
 
                                 </tbody>
                                 </table> 
@@ -138,61 +198,34 @@ tr.shown td.details-control {
 }
 </style>
    <script type="text/javascript">
-    $("#calculatedbtn").on("click",function(){
-        $("#tipe").val('calculated');
-        $(this).attr('class','btn btn-primary');
-        $("#manualbtn").attr('class','btn btn-default');
-
-    });
-
-    $("#manualbtn").on("click",function(){
-        $("#tipe").val('manual');
-       $(this).attr('class','btn btn-primary');
-        $("#calculatedbtn").attr('class','btn btn-default');
-
-         
-    });
-      $('#daftar_satuan').DataTable( {
-            "ajax": "<?php echo base_url(); ?>dokter/fetch_satuan"           
+    
+      $('#daftar_treatment').DataTable( {
+            "ajax": "<?php echo base_url(); ?>dokter/fetch_treatment"           
     });
 
      
      
-    function CariSatuan(){
-        $("#CariSatuanModal").modal({backdrop: 'static', keyboard: false,show:true});
+    function CariTreatment(){
+        $("#CariTreatmentModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
-   
-        
-        var daftar_satuan = $('#daftar_satuan').DataTable();
+    
+        var daftar_treatment = $('#daftar_treatment').DataTable();
      
-        $('#daftar_satuan tbody').on('click', 'tr', function () {
+        $('#daftar_treatment tbody').on('click', 'tr', function () {
             
-            var content = daftar_satuan.row(this).data()
+            var content = daftar_treatment.row(this).data()
             console.log(content);
-            $("#nama_satuan").val(content[0]);
-            $("#id_satuan").val(content[1]);
-            $("#CariSatuanModal").modal('hide');
+            $("#nama_treatment").val(content[0]);
+            $("#sub_treatment").val(content[1]);
+            $("#detail_treatment").html(content[2]);
+            $("#id_treatment").val(content[3]);
+            $("#id_treatment_detail").val(content[4]);
+            $("#CariTreatmentModal").modal('hide');
         } );
-     
-    function GetParentsVal(id){
-        console.log(id);
-        $.get("<?php echo base_url('dokter/fetch_nama_parents_row/'); ?>"+id,function(result){
-            console.log(result);
-            var parse = JSON.parse(result);
-            $("#id_parent_dokter").val(id);
-            $("#nama_dokter_parent").val(parse.nama_dokter);
-            $("#CariParentModal").modal('hide');
-        });
-
-    }
-
-   
-   
-         
-       
+  
      function Ubah_Data(id){
         $("#defaultModalLabel").html("Form Ubah Data");
-        $("#defaultModal").modal('show');
+        $("#defaultModal").modal({backdrop: 'static', keyboard: false,show:true});
         $('#user_form')[0].reset();
         $.ajax({
              url:"<?php echo base_url(); ?>dokter/get_data_edit/"+id,
@@ -203,15 +236,7 @@ tr.shown td.details-control {
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id);
                  $("#tesres").val(result.tipe);
-                 $("#id_satuan").val(result.id_satuan);    
-                 if(result.tipe == 'calculated'){
-                    $("#calculatedbtn").attr('class','btn btn-primary');
-                    $("#manualbtn").attr('class','btn btn-default');
-                 }else{
-                    $("#calculatedbtn").attr('class','btn btn-default');
-                    $("#manualbtn").attr('class','btn btn-primary');
-                 }
-                 $("#tipe").val(result.tipe);
+                 
 
                  $("#nama_dokter").val(result.nama_dokter);
                  $("#nama_satuan").val(result.satuan);
@@ -220,12 +245,29 @@ tr.shown td.details-control {
              }
          });
      }
+     function Detail_Data(id){
+ 
+        $("#DetailDokterModal").modal({backdrop: 'static', keyboard: false,show:true});
+         
+        $.ajax({
+             url:"<?php echo base_url(); ?>dokter/get_data_edit/"+id,
+             type:"GET",
+             dataType:"JSON", 
+             success:function(result){ 
+                  console.log(result);
+                 $("#defaultModal").modal('show'); 
+                 $("#id").val(result.id);
+                 
+                 $("#nama_dokter").val(result.nama_dokter);
+                  
+                  
+             }
+         });
+     }
  
      function Bersihkan_Form(){
         $(':input').val(''); 
-        $("#calculatedbtn").attr('class','btn btn-default');
-        $("#manualbtn").attr('class','btn btn-default');
-         
+        
      }
 
      function Hapus_Data(id){
@@ -259,22 +301,40 @@ tr.shown td.details-control {
    
     }
     }
-    
-      
-  
+     
     function Simpan_Data(){
         //setting semua data dalam form dijadikan 1 variabel 
          var formData = new FormData($('#user_form')[0]); 
 
            
-         var nama_dokter = $("#nama_dokter").val();
-          var id_satuan = $("#id_satuan").val();
+        var nama = $("#nama").val();
+        var alamat = $("#alamat").val();
+        var telp = $("#telp").val();
+        var email = $("#email").val();
+        var id_treatment = $("#id_treatment").val();
+        var id_treatment_detail = $("#id_treatment_detail").val();
        
-        if(id_satuan == ''){
-            alert("Satuan Belum anda masukkan!");
-            $("#id_satuan").parents('.form-line').addClass('focused error');
-            $("#id_satuan").focus();
-        }else{
+        if(nama == ''){
+            alert("Nama Belum anda masukkan!");
+            $("#nama").parents('.form-line').addClass('focused error');
+            $("#nama").focus();
+        }else if(alamat == ''){
+            alert("Alamat Belum anda masukkan!");
+            $("#alamat").parents('.form-line').addClass('focused error');
+            $("#alamat").focus();
+        }else if(telp == ''){
+            alert("Telp Belum anda masukkan!");
+            $("#telp").parents('.form-line').addClass('focused error');
+            $("#telp").focus();
+        }else if(email == ''){
+            alert("Email Belum anda masukkan!");
+            $("#email").parents('.form-line').addClass('focused error');
+            $("#email").focus();
+        }else if(id_treatment == ''){
+            alert("Treatment Belum anda masukkan!");
+            $("#nama_treatment").parents('.form-line').addClass('focused error');
+            $("#nama_treatment").focus();
+        }else{ 
 
             //transaksi dibelakang layar
             $.ajax({

@@ -175,9 +175,9 @@
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('specialist'); ?>">
+                        <a href="<?php echo base_url('treatment'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Specialist</span>
+                            <span>Treatment</span>
                         </a>
                     </li> 
                     <li>

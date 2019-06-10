@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Specialist
+                                Treatment
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -24,7 +24,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:5%;">No</th>  
-                                            <th style="width:5%;">Specialist</th>
+                                            <th style="width:5%;">treatment</th>
                                             
                                             <th style="width:5%;">Opsi</th> 
                                         </tr>
@@ -56,7 +56,7 @@
 
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_specialist" id="nama_specialist" class="form-control" placeholder="Nama specialist" />
+                                            <input type="text" name="nama_treatment" id="nama_treatment" class="form-control" placeholder="Nama treatment" />
                                         </div>
                                     </div>
                                 
@@ -139,7 +139,7 @@ tr.shown td.details-control {
         $("#defaultModal").modal('show');
         $('#user_form')[0].reset();
         $.ajax({
-             url:"<?php echo base_url(); ?>specialist/get_data_edit/"+id,
+             url:"<?php echo base_url(); ?>treatment/get_data_edit/"+id,
              type:"GET",
              dataType:"JSON", 
              success:function(result){ 
@@ -157,7 +157,7 @@ tr.shown td.details-control {
                  }
                  $("#tipe").val(result.tipe);
 
-                 $("#nama_specialist").val(result.nama_specialist);
+                 $("#nama_treatment").val(result.nama_treatment);
                  $("#nama_satuan").val(result.satuan);
                 
                   
@@ -177,7 +177,7 @@ tr.shown td.details-control {
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('specialist/hapus_data')?>/"+id,
+            url : "<?php echo base_url('treatment/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -211,7 +211,7 @@ tr.shown td.details-control {
          var formData = new FormData($('#user_form')[0]); 
 
            
-         var nama_specialist = $("#nama_specialist").val();
+         var nama_treatment = $("#nama_treatment").val();
           var id_satuan = $("#id_satuan").val();
        
         if(id_satuan == ''){
@@ -222,7 +222,7 @@ tr.shown td.details-control {
 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>specialist/simpan_data",
+             url:"<?php echo base_url(); ?>treatment/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -263,11 +263,11 @@ function format ( d ) {
     var dataChild = [];
     var hasChildren = false;
     $.each(g_dataFull, function(){
-       if(this.id_parent_specialist === d.id){
+       if(this.id_parent_treatment === d.id){
           html += 
             '<tr><td>' + $('<div>').text(this.nama_pelayanan).html() + '</td>' + 
             '<td>' +  $('<div>').text(this.nama_komp_biaya).html() + '</td>' + 
-            '<td>' +  $('<div>').text(this.nama_specialist).html() +'</td>' + 
+            '<td>' +  $('<div>').text(this.nama_treatment).html() +'</td>' + 
             '<td>' +  $('<div>').text(this.nama_satuan).html() + '</td>'+
             '<td>' +  $('<div>').text(this.action).html() + '</td></tr>';
 
@@ -298,7 +298,7 @@ function format ( d ) {
       
         
      $('#example').DataTable( {
-            "ajax": "<?php echo base_url(); ?>specialist/fetch_specialist" 
+            "ajax": "<?php echo base_url(); ?>treatment/fetch_treatment" 
                
         });
  
