@@ -38,7 +38,7 @@ class Dokter extends Parent_Controller {
 	  
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$this->db->select('*');
+		$this->db->select('*,m_dokter.id as id_dokter');
 		$this->db->from('m_dokter');
 		$this->db->join('m_treatment', 'm_treatment.id = m_dokter.id_treatment');
 		$this->db->join('m_treatment_detail', 'm_treatment_detail.id_treatment = m_treatment.id');

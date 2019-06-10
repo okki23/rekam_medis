@@ -53,7 +53,7 @@
                         <div class="modal-body">
                               <form method="post" id="user_form" enctype="multipart/form-data">   
                                  
-                                    <input type="hidden" name="id" id="id">    
+                                    <input type="text" name="id" id="id">    
 
                                     <div class="form-group">
                                         <div class="form-line">
@@ -86,8 +86,8 @@
                                                 <div class="form-line">
                                                 <label class="control-label"> Nama Treatment : </label>
                                                     <input type="text" name="nama_treatment" id="nama_treatment" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_treatment" id="id_treatment" required>
-                                                    <input type="hidden" name="id_treatment_detail" id="id_treatment_detail" required>
+                                                    <input type="text" name="id_treatment" id="id_treatment" required>
+                                                    <input type="text" name="id_treatment_detail" id="id_treatment_detail" required>
                                                     
                                                 </div> 
                                                 <span class="input-group-addon">
@@ -168,35 +168,69 @@
                                 <br>
                                 <hr>
 
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_treatment" >
-  
-                                    <thead>
-                                        <tr>  
-                                            <th style="width:98%;">Treatment </th> 
-                                            <th style="width:98%;">Detail </th> 
-                  
-                                        </tr>
-                                    </thead> 
-                                    <tbody id="daftar_treatmentx">
-
-                                </tbody>
-                                </table> 
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Nama : </label>
+                                            <p id="nama_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Alamat : </label>
+                                            <p id="alamat_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Jam Operasional : </label>
+                                            <p id="jam_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Telp : </label>
+                                            <p id="telp_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Email : </label>
+                                            <p id="email_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Treatment : </label>
+                                            <p id="treatment_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Sub Treatment : </label>
+                                            <p id="sub_treatment_detail"> </p>
+                                           
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <div class="form-line">
+                                            <label class="control-label"> Detail : </label>
+                                            <p id="detail_exp"> </p>
+                                           
+                                        </div>
+                                </div>
                        </div>
                      
                     </div>
                 </div>
     </div>
 
- 
-<style type="text/css">
-    td.details-control {
-    background: url('https://raw.githubusercontent.com/DataTables/DataTables/1.10.7/examples/resources/details_open.png') no-repeat center center;
-    cursor: pointer;
-}
-tr.shown td.details-control {
-    background: url('https://raw.githubusercontent.com/DataTables/DataTables/1.10.7/examples/resources/details_close.png') no-repeat center center;
-}
-</style>
+  
    <script type="text/javascript">
     
       $('#daftar_treatment').DataTable( {
@@ -234,13 +268,18 @@ tr.shown td.details-control {
              success:function(result){ 
                   console.log(result);
                  $("#defaultModal").modal('show'); 
-                 $("#id").val(result.id);
-                 $("#tesres").val(result.tipe);
+                 $("#id").val(result.id_dokter);
+                 $("#nama").val(result.nama);  
+                 $("#alamat").val(result.alamat);
+                 $("#telp").val(result.telp); 
+                 $("#email").val(result.email);
+                 $("#jam_operasional").val(result.jam_operasional);   
+                 $("#nama_treatment").val(result.nama_treatment);
+                 $("#id_treatment").val(result.id_treatment);
+                 $("#id_treatment_detail").val(result.id_treatment_detail);
+                 $("#sub_treatment").val(result.child_treatment);
+                 $("#detail_treatment").html(result.detail_treatment);
                  
-
-                 $("#nama_dokter").val(result.nama_dokter);
-                 $("#nama_satuan").val(result.satuan);
-                
                   
              }
          });
@@ -254,13 +293,17 @@ tr.shown td.details-control {
              type:"GET",
              dataType:"JSON", 
              success:function(result){ 
-                  console.log(result);
-                 $("#defaultModal").modal('show'); 
-                 $("#id").val(result.id);
-                 
-                 $("#nama_dokter").val(result.nama_dokter);
-                  
-                  
+                 console.log(result); 
+                 $("#id").val(result.id); 
+                 $("#nama_detail").html(result.nama);
+                 $("#alamat_detail").html(result.alamat);
+                 $("#telp_detail").html(result.telp);
+                 $("#email_detail").html(result.email);
+                 $("#jam_detail").html(result.jam_operasional);
+                 $("#treatment_detail").html(result.nama_treatment);
+                 $("#sub_treatment_detail").html(result.child_treatment);
+                 $("#detail_exp").html(result.detail_treatment);
+                   
              }
          });
      }
@@ -282,7 +325,8 @@ tr.shown td.details-control {
             {
                
                $('#example').DataTable().ajax.reload(); 
-               
+               $('#user_form')[0].reset();
+                 $('#detail_treatment').html('');
                 $.notify("Data berhasil dihapus!", {
                     animate: {
                         enter: 'animated fadeInRight',
@@ -348,6 +392,7 @@ tr.shown td.details-control {
                  $("#defaultModal").modal('hide');
                  $('#example').DataTable().ajax.reload(); 
                  $('#user_form')[0].reset();
+                 $('#detail_treatment').html('');
                  Bersihkan_Form();
                  $.notify("Data berhasil disimpan!", {
                     animate: {

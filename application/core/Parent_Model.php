@@ -28,27 +28,14 @@ class Parent_Model extends CI_Model {
  	}
  
  	public function simpan_data_master($data_form,$nama_tabel,$primary_key,$id){
-
- 		$user_insert = $this->session->userdata('username');
- 		$date_insert = date('Y-m-d H:i:s');
- 		$user_update = $this->session->userdata('username');
- 		$date_update = date('Y-m-d H:i:s');
-		
-		$log_data_baru = array("user_insert"=>$user_insert,"date_insert"=>$date_insert); 
-		$log_data_update = array("user_update"=>$user_update,"date_update"=>$date_update); 
-	 
-
-		$save = array_merge($data_form,$log_data_baru);
-		
-		$update = array_merge($data_form,$log_data_update);
-		
+ 
  		if ($id === NULL || $id == '') { 
-            $this->db->set($save);
+          
             return $this->db->insert($nama_tabel);
            
         } else {
             
-            $this->db->set($update);
+             
             $this->db->where($primary_key, $id);
             return $this->db->update($nama_tabel);
            
