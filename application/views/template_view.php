@@ -163,45 +163,30 @@
                         </a>
                         <ul class="ml-menu">
                     <li>
-                        <a href="<?php echo base_url('jenis_layanan'); ?>">
+                        <a href="<?php echo base_url('dokter'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Jenis Pelayanan</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('komp_biaya'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Komponen Biaya</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('satuan'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Satuan</span>
-                        </a>
-                    </li> 
-                      
-                    <li>
-                        <a href="<?php echo base_url('penawaran'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Penawaran</span>
+                            <span>Dokter</span>
                         </a>
                     </li>
-                    
-                   
                     <li>
-                        <a href="<?php echo base_url('country'); ?>">
+                        <a href="<?php echo base_url('pasien'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Country</span>
+                            <span>Pasien</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('pricelist'); ?>">
+                        <a href="<?php echo base_url('specialist'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Pricelist</span>
+                            <span>Specialist</span>
                         </a>
-                    </li>
-                   
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('specialist_detail'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Specialist Detail</span>
+                        </a>
+                    </li> 
+                       
                     <li>
                         <a href="<?php echo base_url('user'); ?>">
                            <i class="material-icons">dns</i>
@@ -221,77 +206,12 @@
                         <ul class="ml-menu">
                  
                     <li>
-                        <a href="<?php echo base_url('gardu'); ?>">
+                        <a href="<?php echo base_url('jadwal_kunjungan'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Gardu</span>
+                            <span>Jadwal Kunjungan</span>
                         </a>
                     </li> 
-                     <li>
-                        <a href="<?php echo base_url('upload_harga'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Upload Harga</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="javascript::void(0);" class="menu-toggle">
-                           <i class="material-icons">dns</i>
-                            <span>Harga</span>
-                        </a>
-                         <ul class="ml-menu">
-                            <li>
-                                <a href="<?php echo base_url('harga'); ?>">
-                                       <i class="material-icons">dns</i>
-                                        <span>Master Harga</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url('set_harga'); ?>">
-                                   <i class="material-icons">dns</i>
-                                    <span>Set Harga</span>
-                                </a>
-                            </li> 
-                        </ul>
-                    </li> 
-               
-                      <li>
-                        <a href="<?php echo base_url('setup_penawaran'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Setup Harga Penawaran</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('asumsi'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Asumsi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('asumsi_list'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Asumsi List</span>
-                        </a>
-                    </li>
-                   
-                    <li>
-                        <a href="<?php echo base_url('jlo_sdm_cat'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>JMTO SDM Wide Cat</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('jlo_sdm_list'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>JMTO SDM Wide List</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('jlo_sdm_val'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>JMTO SDM Wide Value</span>
-                        </a>
-                    </li>
-                    
-                
+                     
                     
                         </ul>
                     </li>
